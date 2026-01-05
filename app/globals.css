@@ -5,46 +5,15 @@
   --font-inter: "Inter", system-ui, sans-serif;
 }
 
-:root {
-  --background-image: url('/animated-bg.png');
-}
-
-@keyframes panZoom {
-  0% {
-    transform: scale(1.0);
-  }
-
-  50% {
-    transform: scale(1.1) translate(1%, 1%);
-  }
-
-  100% {
-    transform: scale(1.0);
-  }
-}
 
 body {
   font-family: var(--font-inter);
-  background-color: #020617;
+  background-color: black;
   color: #f8fafc;
   overflow-x: hidden;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: -5%;
-  left: -5%;
-  width: 110%;
-  height: 110%;
-  background-image: var(--background-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-  animation: panZoom 30s ease-in-out infinite;
-  pointer-events: none;
-}
+/* Background image removed */
 
 /* Glassmorphism utility */
 .glass {
@@ -57,21 +26,58 @@ body::before {
 
 /* Hide UI elements during print */
 @media print {
-  .no-print {
-    display: none !important;
+  @page {
+    margin: 0.5cm;
+    size: auto;
   }
 
   body {
     background: white !important;
     background-image: none !important;
-    color: black;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+  }
+
+  .no-print {
+    display: none !important;
   }
 
   .invoice {
-    page-break-after: always;
+    page-break-after: avoid;
+    page-break-inside: avoid;
     box-shadow: none !important;
     border: 1px solid #e2e8f0 !important;
     background: white !important;
     color: black !important;
+    margin: 0 auto !important;
+  }
+
+  /* Ensure the header background and text are correct */
+  .invoice>div:first-child {
+    background: #0f172a !important;
+    /* Slate-900 */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .invoice>div:first-child * {
+    color: white !important;
+  }
+
+  /* Force content text to black, but preserve watermark opacity */
+  .invoice>div:nth-child(2) *:not(.watermark) {
+    color: black !important;
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    text-fill-color: initial !important;
+    -webkit-text-fill-color: initial !important;
   }
 }

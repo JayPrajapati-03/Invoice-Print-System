@@ -38,7 +38,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
       {/* Invoice Content */}
       <div className="relative p-8 px-10">
         {/* Subtle Watermark */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.02]">
+        <div className="watermark pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.05] print:opacity-[0.1]">
           <span className="rotate-[-30deg] text-9xl font-black">PAID</span>
         </div>
 
@@ -73,7 +73,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
             </div>
             <div className="text-right">
               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Total Amount</p>
-              <p className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-4xl font-black text-transparent">
+              <p className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-4xl font-black text-transparent print:text-black">
                 {invoice.amount}
               </p>
             </div>
