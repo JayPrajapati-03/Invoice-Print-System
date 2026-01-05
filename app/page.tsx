@@ -24,7 +24,7 @@ export default async function Page() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 p-4 flex flex-col items-center gap-4">
+    <main className="min-h-screen bg-gray-100 flex flex-col items-center justify-center gap-4 p-4">
       <Invoice invoice={invoice} />
       <PrintOptions />
     </main>

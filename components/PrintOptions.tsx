@@ -49,7 +49,7 @@ export default function PrintOptions() {
 
       <button
         onClick={handlePrint}
-        className="w-full rounded bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
+        className="w-full rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
       >
         Print Invoice
       </button>
