@@ -13,7 +13,6 @@ type InvoiceProps = {
 export default function Invoice({ invoice }: InvoiceProps) {
   return (
     <div className="invoice glass w-full max-w-2xl overflow-hidden rounded-2xl p-0 transition-all hover:shadow-2xl">
-      {/* Dynamic Header with Gradient */}
       <div className="flex items-center justify-between bg-slate-900 p-8 text-white">
         <div className="flex items-center gap-4">
           <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white p-1">
@@ -37,9 +36,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
         </div>
       </div>
 
-      {/* Invoice Content */}
       <div className="relative p-8 px-10">
-        {/* Subtle Watermark */}
         <div className="watermark pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.08] print:opacity-[0.1]">
           <span className="rotate-[-30deg] text-9xl font-black text-slate-900">PAID</span>
         </div>
@@ -83,7 +80,6 @@ export default function Invoice({ invoice }: InvoiceProps) {
         </div>
       </div>
 
-      {/* Footer Decoration */}
       <div className="h-1 w-full bg-slate-900 opacity-50"></div>
     </div>
   );

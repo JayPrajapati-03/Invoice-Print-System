@@ -9,12 +9,12 @@ export default function PrintOptions() {
     const invoice = document.querySelector(".invoice");
     if (!invoice) return;
 
-    // Remove previously cloned invoices (if any)
+    // Remove previously cloned invoices
     document
       .querySelectorAll(".invoice.clone")
       .forEach((node) => node.remove());
 
-    // Clone invoice based on selected copies
+    // invoice based on selected copies
     for (let i = 1; i < copies; i++) {
       const clone = invoice.cloneNode(true) as HTMLElement;
       clone.classList.add("clone");
