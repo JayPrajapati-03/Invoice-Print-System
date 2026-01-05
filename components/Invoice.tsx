@@ -29,8 +29,10 @@ export default function Invoice({ invoice }: InvoiceProps) {
             <p className="text-xs text-slate-400">Professional Printing Services</p>
           </div>
         </div>
-        <div className="text-right">
-          <h1 className="text-3xl font-black uppercase tracking-widest opacity-20">INVOICE</h1>
+        <div className="flex flex-col items-end">
+          <h1 className="text-3xl font-black uppercase tracking-widest opacity-20 leading-none -mr-[0.1em]">
+            INVOICE
+          </h1>
           <p className="text-sm font-medium text-slate-400">{invoice.invoiceNumber}</p>
         </div>
       </div>
