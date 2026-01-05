@@ -13,8 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Background image removed */
-
 .glass {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
@@ -23,7 +21,6 @@ body {
   box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.1);
 }
 
-/* Hide UI elements during print */
 @media print {
   @page {
     margin: 20mm;
@@ -53,17 +50,14 @@ body {
     width: 100% !important;
   }
 
-  /* Reset the wrapper div inside main */
   main>div {
     max-width: none !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    /* Changed from 1cm to 0 to prevent extra page */
     display: block !important;
   }
 
-  /* Force space-y-12 to 0 for print */
   main .space-y-12> :not([hidden])~ :not([hidden]) {
     margin-top: 0 !important;
   }
@@ -82,21 +76,16 @@ body {
     background: white !important;
     color: black !important;
     margin: 0 auto !important;
-    /* Removed bottom margin to prevent overflow */
   }
 
-  /* Only break page BETWEEN invoices */
   .invoice+.invoice {
     break-before: page;
     page-break-before: always;
     margin-top: 2rem !important;
-    /* Space between invoices when printing multiple per page (if allowed, but break-before prevents it) */
   }
 
-  /* Ensure the header background and text are correct */
   .invoice>div:first-child {
     background: #0f172a !important;
-    /* Black/Slate-900 */
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -105,7 +94,6 @@ body {
     color: white !important;
   }
 
-  /* Force content text to black, but preserve watermark opacity */
   .invoice>div:nth-child(2) *:not(.watermark) {
     color: black !important;
     background-color: transparent !important;
