@@ -14,7 +14,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
   return (
     <div className="invoice glass w-full max-w-2xl overflow-hidden rounded-2xl p-0 transition-all hover:shadow-2xl">
       {/* Dynamic Header with Gradient */}
-      <div className="flex items-center justify-between bg-gradient-to-r from-indigo-600 to-indigo-500 p-8 text-white">
+      <div className="flex items-center justify-between bg-slate-900 p-8 text-white">
         <div className="flex items-center gap-4">
           <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white p-1">
             <Image
@@ -31,7 +31,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
         </div>
         <div className="text-right">
           <h1 className="text-3xl font-black uppercase tracking-widest opacity-20">INVOICE</h1>
-          <p className="text-sm font-medium text-indigo-400">{invoice.invoiceNumber}</p>
+          <p className="text-sm font-medium text-slate-400">{invoice.invoiceNumber}</p>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
             </div>
             <div className="text-right">
               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Total Amount</p>
-              <p className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-4xl font-black text-transparent print:text-black">
+              <p className="text-slate-900 text-4xl font-black print:text-black">
                 {invoice.amount}
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
       </div>
 
       {/* Footer Decoration */}
-      <div className="h-1 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-50"></div>
+      <div className="h-1 w-full bg-slate-900 opacity-50"></div>
     </div>
   );
 }
