@@ -14,7 +14,7 @@ export default function Invoice({ invoice }: InvoiceProps) {
   return (
     <div className="invoice glass w-full max-w-2xl overflow-hidden rounded-2xl p-0 transition-all hover:shadow-2xl">
       {/* Dynamic Header with Gradient */}
-      <div className="flex items-center justify-between bg-gradient-to-r from-slate-900 to-slate-800 p-8 text-white">
+      <div className="flex items-center justify-between bg-gradient-to-r from-indigo-600 to-indigo-500 p-8 text-white">
         <div className="flex items-center gap-4">
           <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white p-1">
             <Image
@@ -38,27 +38,27 @@ export default function Invoice({ invoice }: InvoiceProps) {
       {/* Invoice Content */}
       <div className="relative p-8 px-10">
         {/* Subtle Watermark */}
-        <div className="watermark pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.05] print:opacity-[0.1]">
-          <span className="rotate-[-30deg] text-9xl font-black">PAID</span>
+        <div className="watermark pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.08] print:opacity-[0.1]">
+          <span className="rotate-[-30deg] text-9xl font-black text-slate-900">PAID</span>
         </div>
 
         <div className="grid grid-cols-2 gap-12 border-b border-white/5 pb-8 mb-8">
           <div>
             <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">Bill To</p>
-            <p className="text-lg font-semibold text-slate-200">{invoice.clientName}</p>
-            <p className="mt-1 text-sm text-slate-400">Valued Customer</p>
+            <p className="text-lg font-semibold text-slate-900">{invoice.clientName}</p>
+            <p className="mt-1 text-sm text-slate-500">Valued Customer</p>
           </div>
           <div className="text-right">
             <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">Issued On</p>
-            <p className="text-lg font-semibold text-slate-200">{invoice.date}</p>
+            <p className="text-lg font-semibold text-slate-900">{invoice.date}</p>
           </div>
         </div>
 
         <div className="space-y-6">
           <div>
             <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-500">Service Description</p>
-            <div className="rounded-xl bg-white/5 p-4 border border-white/5">
-              <p className="text-sm leading-relaxed text-slate-300 italic">
+            <div className="rounded-xl bg-slate-900/[0.03] p-4 border border-slate-900/[0.05]">
+              <p className="text-sm leading-relaxed text-slate-700 italic">
                 "{invoice.description}"
               </p>
             </div>

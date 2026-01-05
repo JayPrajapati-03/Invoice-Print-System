@@ -28,18 +28,18 @@ export default function PrintOptions() {
     <div className="no-print glass w-full max-w-2xl rounded-2xl p-6 transition-all">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="space-y-1">
-          <p className="text-sm font-semibold uppercase tracking-wider text-slate-400">Distribution</p>
-          <p className="text-lg font-medium text-slate-200">How many copies do you need?</p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">Distribution</p>
+          <p className="text-lg font-medium text-slate-900">How many copies do you need?</p>
         </div>
 
-        <div className="flex gap-2 rounded-xl bg-white/5 p-1 border border-white/5">
+        <div className="flex gap-2 rounded-xl bg-slate-900/5 p-1 border border-slate-900/5">
           {[1, 2, 3].map((num) => (
             <button
               key={num}
               onClick={() => setCopies(num)}
               className={`flex h-10 w-16 items-center justify-center rounded-lg text-sm font-bold transition-all ${copies === num
-                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
-                  : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
+                ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
+                : "text-slate-500 hover:bg-slate-900/5 hover:text-slate-900"
                 }`}
             >
               {num}

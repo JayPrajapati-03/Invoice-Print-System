@@ -17,7 +17,7 @@ export default async function Page() {
 
   const invoice: InvoiceType = {
     invoiceNumber: "INV-2026-001",
-    clientName: "John Doe",
+    clientName: "Jay Prajapati",
     date: "06-01-2026",
     amount: "₹12,500",
     description: data.title,
