@@ -41,6 +41,7 @@ body {
     padding: 0 !important;
     height: auto !important;
     display: block !important;
+    overflow: visible !important;
   }
 
   main {
@@ -57,7 +58,8 @@ body {
     max-width: none !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 1cm !important;
+    padding: 0 !important;
+    /* Changed from 1cm to 0 to prevent extra page */
     display: block !important;
   }
 
@@ -83,12 +85,12 @@ body {
     /* Removed bottom margin to prevent overflow */
   }
 
-  /* Only break page after an invoice if it's NOT the last one */
-  .invoice:not(:last-child) {
-    break-after: page;
-    page-break-after: always;
-    margin-bottom: 2rem !important;
-    /* Add spacing between invoices when not breaking page? No, page break handles it. */
+  /* Only break page BETWEEN invoices */
+  .invoice+.invoice {
+    break-before: page;
+    page-break-before: always;
+    margin-top: 2rem !important;
+    /* Space between invoices when printing multiple per page (if allowed, but break-before prevents it) */
   }
 
   /* Ensure the header background and text are correct */
