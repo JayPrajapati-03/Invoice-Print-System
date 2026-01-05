@@ -1,13 +1,11 @@
 "use client";
 
+import { useState } from "react";
+
 export default function PrintOptions() {
+  const [copies, setCopies] = useState(1);
+
   const handlePrint = () => {
-    const selected = document.querySelector(
-      'input[name="copies"]:checked'
-    ) as HTMLInputElement | null;
-
-    const copies = selected ? Number(selected.value) : 1;
-
     const invoice = document.querySelector(".invoice");
     if (!invoice) return;
 
@@ -27,32 +25,45 @@ export default function PrintOptions() {
   };
 
   return (
-    <div className="no-print w-full max-w-lg rounded-lg border bg-white p-4 shadow-sm">
-      <p className="mb-2 font-medium">Select number of copies:</p>
+    <div className="no-print glass w-full max-w-2xl rounded-2xl p-6 transition-all">
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-1">
+          <p className="text-sm font-semibold uppercase tracking-wider text-slate-400">Distribution</p>
+          <p className="text-lg font-medium text-slate-200">How many copies do you need?</p>
+        </div>
 
-      <div className="mb-4 flex gap-4 text-sm">
-        <label className="flex items-center gap-2">
-          <input type="radio" name="copies" value="1" defaultChecked />
-          1 Copy
-        </label>
-
-        <label className="flex items-center gap-2">
-          <input type="radio" name="copies" value="2" />
-          2 Copies
-        </label>
-
-        <label className="flex items-center gap-2">
-          <input type="radio" name="copies" value="3" />
-          3 Copies
-        </label>
+        <div className="flex gap-2 rounded-xl bg-white/5 p-1 border border-white/5">
+          {[1, 2, 3].map((num) => (
+            <button
+              key={num}
+              onClick={() => setCopies(num)}
+              className={`flex h-10 w-16 items-center justify-center rounded-lg text-sm font-bold transition-all ${copies === num
+                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20"
+                  : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
+                }`}
+            >
+              {num}
+            </button>
+          ))}
+        </div>
       </div>
 
       <button
         onClick={handlePrint}
-        className="w-full rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+        className="group relative mt-8 w-full overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4 text-sm font-bold tracking-widest text-white shadow-xl shadow-indigo-600/20 transition-all hover:scale-[1.01] active:scale-95"
       >
-        Print Invoice
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          READY TO PRINT
+          <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </span>
+        <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20 transition-all group-hover:h-full group-hover:bg-white/10"></div>
       </button>
+
+      <p className="mt-4 text-center text-[10px] text-slate-500 uppercase tracking-widest">
+        Optimized for standard A4 desktop printing
+      </p>
     </div>
   );
 }

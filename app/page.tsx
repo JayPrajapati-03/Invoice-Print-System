@@ -24,9 +24,11 @@ export default async function Page() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 flex flex-col items-center justify-center gap-6 p-4">
-      <Invoice invoice={invoice} />
-      <PrintOptions />
+    <main className="min-h-screen flex flex-col items-center justify-center gap-12 p-8 py-20">
+      <div className="w-full max-w-2xl space-y-12">
+        <Invoice invoice={invoice} />
+        <PrintOptions />
+      </div>
     </main>
   );
 }

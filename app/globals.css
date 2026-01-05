@@ -1,5 +1,60 @@
 @import "tailwindcss";
 
+@theme {
+  --color-slate-950: #020617;
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --background-image: url('/animated-bg.png');
+}
+
+@keyframes panZoom {
+  0% {
+    transform: scale(1.0);
+  }
+
+  50% {
+    transform: scale(1.1) translate(1%, 1%);
+  }
+
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #020617;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  animation: panZoom 30s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
 /* Hide UI elements during print */
 @media print {
   .no-print {
@@ -7,10 +62,16 @@
   }
 
   body {
-    background: white;
+    background: white !important;
+    background-image: none !important;
+    color: black;
   }
 
   .invoice {
     page-break-after: always;
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    background: white !important;
+    color: black !important;
   }
 }

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type InvoiceProps = {
   invoice: {
     invoiceNumber: string;
@@ -10,44 +12,77 @@ type InvoiceProps = {
 
 export default function Invoice({ invoice }: InvoiceProps) {
   return (
-    <div className="invoice w-full max-w-lg rounded-lg border bg-white p-6 shadow-sm">
-      {/* Heading */}
-      <h1 className="mb-6 text-2xl font-semibold text-gray-800">
-        Invoice
-      </h1>
-
-      {/* Invoice details */}
-      <div className="space-y-4 text-sm text-gray-700">
-        <div className="flex justify-between">
-          <span className="font-medium">Invoice Number</span>
-          <span>{invoice.invoiceNumber}</span>
+    <div className="invoice glass w-full max-w-2xl overflow-hidden rounded-2xl p-0 transition-all hover:shadow-2xl">
+      {/* Dynamic Header with Gradient */}
+      <div className="flex items-center justify-between bg-gradient-to-r from-slate-900 to-slate-800 p-8 text-white">
+        <div className="flex items-center gap-4">
+          <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white p-1">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold tracking-tight">VISTA PRINTS</h2>
+            <p className="text-xs text-slate-400">Professional Printing Services</p>
+          </div>
         </div>
-
-        <div className="flex justify-between">
-          <span className="font-medium">Client Name</span>
-          <span>{invoice.clientName}</span>
-        </div>
-
-        <div className="flex justify-between">
-          <span className="font-medium">Date</span>
-          <span>{invoice.date}</span>
-        </div>
-
-        <div className="flex justify-between">
-          <span className="font-medium">Amount</span>
-          <span className="font-semibold text-black">
-            {invoice.amount}
-          </span>
-        </div>
-
-        {/* Description */}
-        <div>
-          <p className="mb-1 font-medium">Description</p>
-          <p className="text-gray-600 leading-relaxed">
-            {invoice.description}
-          </p>
+        <div className="text-right">
+          <h1 className="text-3xl font-black uppercase tracking-widest opacity-20">INVOICE</h1>
+          <p className="text-sm font-medium text-indigo-400">{invoice.invoiceNumber}</p>
         </div>
       </div>
+
+      {/* Invoice Content */}
+      <div className="relative p-8 px-10">
+        {/* Subtle Watermark */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.02]">
+          <span className="rotate-[-30deg] text-9xl font-black">PAID</span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-12 border-b border-white/5 pb-8 mb-8">
+          <div>
+            <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">Bill To</p>
+            <p className="text-lg font-semibold text-slate-200">{invoice.clientName}</p>
+            <p className="mt-1 text-sm text-slate-400">Valued Customer</p>
+          </div>
+          <div className="text-right">
+            <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">Issued On</p>
+            <p className="text-lg font-semibold text-slate-200">{invoice.date}</p>
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-500">Service Description</p>
+            <div className="rounded-xl bg-white/5 p-4 border border-white/5">
+              <p className="text-sm leading-relaxed text-slate-300 italic">
+                "{invoice.description}"
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-end justify-between pt-4 border-t border-white/5">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Payment Status</p>
+              <span className="mt-1 inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-400 border border-emerald-500/20">
+                Processed
+              </span>
+            </div>
+            <div className="text-right">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Total Amount</p>
+              <p className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-4xl font-black text-transparent">
+                {invoice.amount}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Decoration */}
+      <div className="h-1 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-50"></div>
     </div>
   );
 }
