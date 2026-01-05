@@ -27,7 +27,7 @@ export default function PrintOptions() {
   };
 
   return (
-    <div className="no-print mt-4 w-full max-w-md rounded-lg border bg-white p-4 shadow">
+    <div className="no-print w-full max-w-lg rounded-lg border bg-white p-4 shadow-sm">
       <p className="mb-2 font-medium">Select number of copies:</p>
 
       <div className="mb-4 flex gap-4 text-sm">
