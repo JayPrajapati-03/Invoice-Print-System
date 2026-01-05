@@ -1,4 +1,5 @@
 import Invoice from "@/components/Invoice";
+import PrintOptions from "@/components/PrintOptions";
 
 type InvoiceType = {
   invoiceNumber: string;
@@ -23,8 +24,9 @@ export default async function Page() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <main className="min-h-screen bg-gray-100 p-4 flex flex-col items-center gap-4">
       <Invoice invoice={invoice} />
+      <PrintOptions />
     </main>
   );
 }
