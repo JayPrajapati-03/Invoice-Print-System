@@ -2,17 +2,27 @@
 
 export default function PrintOptions() {
   const handlePrint = () => {
-    // Read selected number of copies (native HTML state)
     const selected = document.querySelector(
       'input[name="copies"]:checked'
     ) as HTMLInputElement | null;
 
     const copies = selected ? Number(selected.value) : 1;
 
-    // Store copies count on body (for later use)
-    document.body.setAttribute("data-copies", copies.toString());
+    const invoice = document.querySelector(".invoice");
+    if (!invoice) return;
 
-    // Trigger browser print
+    // Remove previously cloned invoices (if any)
+    document
+      .querySelectorAll(".invoice.clone")
+      .forEach((node) => node.remove());
+
+    // Clone invoice based on selected copies
+    for (let i = 1; i < copies; i++) {
+      const clone = invoice.cloneNode(true) as HTMLElement;
+      clone.classList.add("clone");
+      invoice.after(clone);
+    }
+
     window.print();
   };
 
