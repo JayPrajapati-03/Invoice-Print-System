@@ -58,7 +58,7 @@ export default function PrintOptions() {
         className="group relative mt-8 w-full overflow-hidden rounded-xl bg-slate-900 px-6 py-4 text-sm font-bold tracking-widest text-white shadow-xl shadow-slate-900/20 transition-all hover:scale-[1.01] active:scale-95"
       >
         <span className="relative z-10 flex items-center justify-center gap-2">
-          READY TO PRINT
+          Print Invoice
           <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
